@@ -54,7 +54,7 @@ class TopTrendingWidget extends StatelessWidget {
                         context,
                         PageTransition(
                             type: PageTransitionType.rightToLeft,
-                            child: const NewsDetailsWebView(
+                            child: NewsDetailsWebView(
                               link: '',
                             ),
                             inheritTheme: true,

@@ -28,3 +28,20 @@ Future<List<NewsModel>> getNews() async {
   }
   return NewsModel.newsFromSnapshot(temp);
 }
+
+Future<List<NewsModel>> getTrendingNews() async {
+  // var url = Uri.parse(
+  //     'https://newsapi.org/v2/everything?q=bitcoin&pageSize=5&apiKey=');
+  var uri = Uri.https(BASE_URL, 'v2/top-headlines',
+      {"q": "bitcoin", "pageSize": "5", "domain": "bbc.co.uk,techcrunch.com"});
+  var response = await http.get(uri, headers: {"X-Api-Key": API_KEY});
+  // dev.log('Response body: ${response.body}');
+  Map data = jsonDecode(response.body);
+  List temp = [];
+
+  for (var val in data["articles"]) {
+    // dev.log(val.toString());
+    temp.add(val);
+  }
+  return NewsModel.newsFromSnapshot(temp);
+}
