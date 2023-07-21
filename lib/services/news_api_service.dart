@@ -22,7 +22,7 @@ Future<List<NewsModel>> getNews() async {
   Map data = jsonDecode(response.body);
   List temp = [];
 
-  for (var val in data["articles"]) {
+  for (Map val in data["articles"]) {
     // dev.log(val.toString());
     temp.add(val);
   }
